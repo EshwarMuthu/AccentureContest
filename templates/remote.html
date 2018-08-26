@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project LUNA - Remote operation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="navbar.css") }}">
+</head>
+<body>
+
+<div class="logo"><img src="{{ url_for('static', filename='Presentation1.png') }}" height="100" width="275" align="middle"></div>
+<div class="nav"><ul>
+    <li class="selected"><a href="/homepage">Home<br></a> </li>
+    <li class="selected"><a href="/bill">Predicted bill</a> </li>
+    <li class="selected"><a href="#">Remote Operation</a> </li>
+    <li class="selected"><a href="/fault">Faults</a> </li>
+    <li class="selected"><a href="/sch">Scheduled Appliances</a> </li>
+</ul></div>
+<div> </div><br>
+<div class="days">Appliance 1
+    <label class="switch">
+    <input type="checkbox" class="remo" id="Remo">
+    <span class="slider round"></span>
+    </label>
+    <button class="remobutton" onclick="myresult()" href="#">CHANGE</button>
+</div>
+<script type="text/javascript">
+    var y1 = {{ y1 }};
+    var y2 = {{ y2 }};
+    var y3 = {{ y3 }};
+    var y4 = {{ y4 }};
+    var y5 = {{ y5 }};
+    if(y1===200){
+        document.getElementById("Remo").checked = true;
+    }
+function myresult() {
+    var result = document.getElementById("Remo").checked ? 200 : 0 ;
+    //new change
+    if (window.XMLHttpRequest) {
+        var xhttp = new XMLHttpRequest();
+    }
+    else{
+        var xhttp = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200){
+
+        }
+    }
+    xhttp.open('POST',"https://api.thingspeak.com/update?api_key=T16BCHGI8DR31N5V&field1="+result, true);
+    xhttp.send()
+
+    //window.open("https://api.thingspeak.com/update?api_key=T16BCHGI8DR31N5V&field1="+result);
+    //window.open("homepage")
+
+    //setTimeout(myresult1,3000)
+    //return false;
+}
+{#function myresult1(){
+        window.open("homepage")
+}#}
+</script>
+</body>
+</html>

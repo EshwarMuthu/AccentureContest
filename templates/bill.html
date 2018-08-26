@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project LUNA - Bill prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="navbar.css") }}">
+</head>
+<body>
+<div class="logo"><img src="{{ url_for('static', filename='Presentation1.png') }}" height="100" width="275" align="middle"></div>
+<div class="nav"><ul>
+    <li class="selected"><a href="/homepage">Home</a> </li>
+    <li class="selected"><a href="#">Predicted bill</a> </li>
+    <li class="selected"><a href="/remote">Remote Operation</a> </li>
+    <li class="selected"><a href="/fault">Faults</a> </li>
+    <li class="selected"><a href="/sch">Scheduled Appliances</a> </li>
+</ul></div>
+
+<div class="days">You have <b><p id="nowdate"></p></b> days left in this month.
+<script type="text/javascript">
+    var d = new Date();
+    var month = d.getMonth();
+    var finaldate;
+    var date = d.getDate();
+    if (month==0 || month==2 || month==4 || month==6 || month==7 || month==11 || month==9) {
+        finaldate=31-date;
+    }
+    else if(month==1){
+        finaldate=28-date;
+    }
+    else{
+        finaldate=30-date;
+    }
+    document.getElementById("nowdate").innerHTML=finaldate;
+</script>
+<br><br>
+    Predicted bill: Rs. {{ dataset }}
+</div>
+<br><br>
+<div id={{ chartID|safe }} class="chart2" style="height: 100px; width: 500px" ></div>
+<script>
+	var chart_id = {{ chartID|safe }}
+	var series = {{ series|safe }}
+	var title = {{ title|safe }}
+	var xAxis = {{ xAxis|safe }}
+	var yAxis = {{ yAxis|safe }}
+	var chart = {{ chart|safe }}
+</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="../static/billgraph.js"></script>
+
+
+</body>
+</html>

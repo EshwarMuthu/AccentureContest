@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project LUNA - Fault Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="navbar.css") }}">
+</head>
+<body>
+
+<div class="logo"><img src="{{ url_for('static', filename='Presentation1.png') }}" height="100" width="275" align="middle"></div>
+<div class="nav"><ul>
+    <li class="selected"><a href="/homepage">Home<br></a> </li>
+    <li class="selected"><a href="/bill">Predicted bill</a> </li>
+    <li class="selected"><a href="/remote">Remote Operation</a> </li>
+    <li class="selected"><a href="#">Faults</a> </li>
+    <li class="selected"><a href="/sch">Scheduled Appliances</a> </li>
+</ul></div>
+<div class="days">Faults Log:</div>
+<div class="days" id="put"></div>
+<script  type="text/javascript">
+    var l1 = {{ lunaglobal }}
+    var d = new Date();
+    var b = d.getHours();
+    var c = d.getMinutes();
+    var f = b+":"+c;
+    if(l1 == 1){
+        var theDiv = document.getElementById("put");
+        var content = document.createTextNode("Fault has been detected in appliance 1 at "+f+" and it has been switched off");
+        theDiv.appendChild(content);
+
+    }
+
+</script>
+</body>
+</html>

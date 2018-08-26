@@ -1,0 +1,114 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.logo{
+    border-style: solid;
+    border-width: 4px;
+    border-color: crimson;
+    text-align: center;
+    padding: 10px;
+}
+.nav{
+    width: 300px;
+    height: 100%;
+    background: crimson;
+    position: fixed;
+    height: 245px;
+}
+div a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    padding-right: 100px;
+}
+div ul li{
+    list-style-type: none;
+    display: block;
+    padding: 15px;
+    border-bottom: 1px solid white;
+}
+div ul li:hover{
+    background: white;
+}
+div ul a:hover{
+    color: crimson;
+}
+.selected{
+    background: crimson;
+}
+.selected{
+    color: white;
+}
+.days{
+    margin-left: 300px;
+    text-align: center;
+    font-size: 23px;
+}
+li a.active{
+    background-color: white;
+    color: crimson;
+}
+.chart{
+    margin-left: 20%;
+    display: block;
+
+}
+.chart2{
+    margin-left: 300px;
+    align-content: center;
+    display: block;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 23px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: crimson;
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

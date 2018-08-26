@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project LUNA - Scheduled appliances</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="navbar.css") }}">
+</head>
+<body>
+
+<div class="logo"><img src="{{ url_for('static', filename='Presentation1.png') }}" height="100" width="275" align="middle"></div>
+<div class="nav"><ul>
+    <li class="selected"><a href="/homepage">Home<br></a> </li>
+    <li class="selected"><a href="/bill">Predicted bill</a> </li>
+    <li class="selected"><a href="/remote">Remote Operation</a> </li>
+    <li class="selected"><a href="/fault">Faults</a> </li>
+    <li class="selected"><a href="#">Scheduled Appliances</a> </li>
+</ul></div><br>
+<div> </div>
+<div class="days">Appliance 1 &nbsp;
+    <input type="time" id="t"> &nbsp; &nbsp;
+    <label class="switch">
+    <input type="checkbox" class="remo" id="Remo">
+    <span class="slider round"></span>
+    </label><br><br>
+    <button class="remobutton" onclick="myresult()">CHANGE</button>
+</div>
+<div class="days" id="change"></div>
+
+<script type="text/javascript">
+    var y1 = {{ y1 }};
+    var y2 = {{ y2 }};
+    var y3 = {{ y3 }};
+    var y4 = {{ y4 }};
+    var y5 = {{ y5 }};
+    if(y1===200){
+        document.getElementById("Remo").checked = true;
+    }
+
+function myresult() {
+    var result = document.getElementById("Remo").checked ? 200 : 0 ;
+
+    //new change
+        var a = document.getElementById('t').value;
+        var d = new Date();
+        var b = d.getHours();
+        var c = d.getMinutes();
+        var f = b+":"+c;
+        if (f == a) {
+            if (window.XMLHttpRequest) {
+                var xhttp = new XMLHttpRequest();
+            }
+            else{
+                var xhttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200){
+
+                }
+            }
+            xhttp.open('POST',"https://api.thingspeak.com/update?api_key=T16BCHGI8DR31N5V&field1="+result, true);
+            xhttp.send()
+            if(result == 200){
+                alert("Appliance 1 switched on");
+            }
+            else{
+                alert("Appliance 1 switched off");
+            }
+            return 0;
+        }
+        else {
+            setTimeout(myresult,1000);
+        }
+
+
+
+
+
+}
+</script>
+</body>
+</html>

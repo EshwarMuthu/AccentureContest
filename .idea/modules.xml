@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../flask-live-charts-master/.idea/flask-live-charts-master.iml" filepath="$PROJECT_DIR$/../flask-live-charts-master/.idea/flask-live-charts-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/freshproj.iml" filepath="$PROJECT_DIR$/.idea/freshproj.iml" />
+    </modules>
+  </component>
+</project>
